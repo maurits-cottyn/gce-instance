@@ -13,33 +13,6 @@ tags = {
     "team" = "internal-dev"
 }
 
-vpc = {
-  "gce-nw-1" = {
-    project      = "maurits-dev"
-    description  = "Network for Belgian GCE development"
-    routing_mode = "REGIONAL"
-
-    subnets = {
-      "europe-west1-development" = {
-        name                  = "gce-instances"
-        cidr_primary          = "10.20.0.0/16"
-        region                = "europe-west1"
-        private_google_access = true
-        secondary_ranges = {
-          "group-1" = {
-            name       = "group-1"
-            cidr_range = "100.64.0.0/16"
-          }
-          "group-2" = {
-            name       = "group-2"
-            cidr_range = "10.30.0.0/20"
-          }
-        }
-      }
-    }
-  }
-}
-
 vms = {
     "gce-instance-1" = {
         project_id   = "maurits-dev"
@@ -67,8 +40,8 @@ vms = {
 
         network_interfaces = [
             {
-                network            = "nw-dev-test-euw1"
-                subnetwork         = "nwr-dev-gce-instances-euw1"
+                network            = "default"
+                subnetwork         = "default"
                 subnetwork_project = "maurits-dev"
                 
                 public_ip = {
@@ -78,5 +51,3 @@ vms = {
         ]
     }
 }
-
-firewalls = {}
